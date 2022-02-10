@@ -1,0 +1,82 @@
+@-webkit-keyframes testritet {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  25% {
+    left: 90vw;
+    top: 0;
+  }
+  50% {
+    left: 90vw;
+    top: 90vh;
+  }
+  75% {
+    left: 0;
+    top: 90vh;
+  }
+  90% {
+    right: 0;
+    top: 0;
+  }
+}
+
+@keyframes testritet {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  25% {
+    left: 90vw;
+    top: 0;
+  }
+  50% {
+    left: 90vw;
+    top: 90vh;
+  }
+  75% {
+    left: 0;
+    top: 90vh;
+  }
+  90% {
+    right: 0;
+    top: 0;
+  }
+}
+
+*, html {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.player {
+  border-radius: 50%;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-color: #4be94f;
+  -webkit-animation-name: testritet;
+          animation-name: testritet;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  display: inline-block;
+}
+
+.start {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.loping {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+/*# sourceMappingURL=test.css.map */
