@@ -29,31 +29,30 @@ function circkle(players=5) {
     var ctx = c.getContext("2d");
 
     var now = new Date();
-    var second = now.getSeconds();
-    console.log(second)
+    var milisecond = now.getMilliseconds();
+    // console.log(milisecond)
 
-    deg = (2*Math.PI/players)+(second/100)
+    colors=["red","green","black","pink","blue"]
+
+    deg = (2*Math.PI/players)+count
     console.log(deg)
+    console.log(count)
     for (let i = 0; i < players; i++) {
         x=200+100*Math.sin(deg*(i+1))
         y=200+100*Math.cos(deg*(i+1))  
-        
+        // console.log(x,y)
         ctx.beginPath();
         ctx.arc(x, y, 15, 0, 2 * Math.PI);
-        ctx.fillStyle = getRndColor();
+        ctx.fillStyle = colors[i];
         ctx.fill();
     }
+    count = count + 0.01
     ctx.save()
+    
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-
-setInterval(circkle, 1000);
-
-
-
+console.log("hej")
+let count = 0.01
+setInterval(circkle, 100);
 
 // player(200,20)
