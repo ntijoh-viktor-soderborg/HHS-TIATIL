@@ -1,32 +1,15 @@
-// document.querySelector(".map").addEventListener("click",stoploping)
 
-// function stoploping(){
-//     console.log("kommer stanna");
-//     let player = document.querySelectorAll("div.player");
-//     player.forEach(element => {
-//         element.classList.toggle("loping");
-//     });
-// }
-
-// function addPlayers(playeramount) {
-//     for (let i = 0; i < playeramount; i++) {
-//         let element = `<div class="player loping" style="animation-delay:${i*100}ms;"></div>`;
-//         document.querySelector(".map").insertAdjacentHTML('afterbegin', element);
-//     }
-// }
-
-// addPlayers(5)
 
 function player(x,y) {
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
+
     ctx.beginPath();
     ctx.arc(x, y, 15, 0, 2 * Math.PI);
-    ctx.fillStyle = "red";
+    console.log()
+    ctx.fillStyle = getRndColor();
     ctx.fill();
 }
 
-function circkle() {
+function Drawcirckle() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     ctx.beginPath();
@@ -34,5 +17,43 @@ function circkle() {
     ctx.stroke();
 }
 
-circkle()
-player(200,20)
+function getRndColor() {
+    var r = 255*Math.random()|0,
+        g = 255*Math.random()|0,
+        b = 255*Math.random()|0;
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+}
+
+function circkle(players=5) {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    var now = new Date();
+    var second = now.getSeconds();
+    console.log(second)
+
+    deg = (2*Math.PI/players)+(second/100)
+    console.log(deg)
+    for (let i = 0; i < players; i++) {
+        x=200+100*Math.sin(deg*(i+1))
+        y=200+100*Math.cos(deg*(i+1))  
+        
+        ctx.beginPath();
+        ctx.arc(x, y, 15, 0, 2 * Math.PI);
+        ctx.fillStyle = getRndColor();
+        ctx.fill();
+    }
+    ctx.save()
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+setInterval(circkle, 1000);
+
+
+
+
+// player(200,20)
