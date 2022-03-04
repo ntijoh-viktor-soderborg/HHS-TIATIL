@@ -24,35 +24,63 @@ function getRndColor() {
     return 'rgb(' + r + ',' + g + ',' + b + ')';
 }
 
-function circkle(players=5) {
+let colors = []
+
+for (let i = 0; i < 180; i++) {
+    colors << getRndColor()
+    console.log(colors)
+}
+
+function circkle(players=8) {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, 400, 400); // clear canvas
 
     var now = new Date();
     var milisecond = now.getMilliseconds();
     // console.log(milisecond)
+    // console.log(colors)
 
-    colors=["red","green","black","pink","blue"]
 
-    deg = (2*Math.PI/players)+count
-    console.log(deg)
-    console.log(count)
+    degbetwen = (2*Math.PI/players)
+    degstart = (2*Math.PI/players)+count
+    // console.log(count)
     for (let i = 0; i < players; i++) {
-        x=200+100*Math.sin(deg*(i+1))
-        y=200+100*Math.cos(deg*(i+1))  
-        // console.log(x,y)
-        ctx.beginPath();
-        ctx.arc(x, y, 15, 0, 2 * Math.PI);
-        ctx.fillStyle = colors[i];
-        ctx.fill();
+        if (i == 0) {
+            // console.log(degstart)
+            
+            a=200+100*Math.sin(degstart)
+            b=200+100*Math.cos(degstart)  
+            // console.log(a,b)
+            ctx.beginPath();
+            ctx.arc(a, b, 15, 0, 2 * Math.PI);
+            // console.log(colors[i])
+            ctx.fillStyle = colors[i];
+            ctx.fill();
+        } else {
+            // console.log(degstart+1)
+            x=200+100*Math.sin(degstart+degbetwen*(i))
+            y=200+100*Math.cos(degstart+degbetwen*(i)) 
+            // console.log(x,y)
+            ctx.beginPath();
+            ctx.arc(x, y, 15, 0, 2 * Math.PI);
+            ctx.fillStyle = colors[i];
+            ctx.fill();  
+        }
     }
     count = count + 0.01
     ctx.save()
     
 }
 
+
+
 console.log("hej")
+for (let i = 0; i < 180; i++) {
+    colors.push(getRndColor())
+}
+// console.log(colors)
 let count = 0.01
-setInterval(circkle, 100);
+setInterval(circkle, 10);
 
 // player(200,20)
