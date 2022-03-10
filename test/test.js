@@ -17,12 +17,24 @@ function Drawcirckle() {
     ctx.stroke();
 }
 
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+  }
+
 function getRndColor() {
     var r = 255*Math.random()|0,
         g = 255*Math.random()|0,
         b = 255*Math.random()|0;
     return 'rgb(' + r + ',' + g + ',' + b + ')';
 }
+
 
 
 
@@ -37,11 +49,12 @@ function circkle() {
     // console.log(milisecond)
     // console.log(colors)
 
-
     degbetwen = (2*Math.PI/players)
     degstart = (2*Math.PI/players)+count
     // console.log(count)
     for (let i = 0; i < players; i++) {
+        
+        
         if (i == 0) {
             // console.log(degstart)
             
@@ -65,7 +78,7 @@ function circkle() {
         }
     }
     count = count + 0.01
-    console.log(count)
+    // console.log(count)
 
     
     ctx.save()
@@ -76,8 +89,10 @@ function circkle() {
 
 console.log("hej")
 let colors = []
-let players = 8
-for (let i = 0; i < 180; i++) {
+let players= document.location["href"].split("=")[1]
+
+// console.log(formData)
+for (let i = 0; i < players; i++) {
     colors.push(getRndColor())
 }
 // console.log(colors)
