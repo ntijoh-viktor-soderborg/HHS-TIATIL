@@ -1,10 +1,6 @@
-
-
 function player(x,y) {
-
     ctx.beginPath();
     ctx.arc(x, y, 15, 0, 2 * Math.PI);
-    console.log()
     ctx.fillStyle = getRndColor();
     ctx.fill();
 }
@@ -35,10 +31,6 @@ function getRndColor() {
     return 'rgb(' + r + ',' + g + ',' + b + ')';
 }
 
-
-
-
-
 function circkle() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
@@ -53,8 +45,6 @@ function circkle() {
     degstart = (2*Math.PI/players)+count
     // console.log(count)
     for (let i = 0; i < players; i++) {
-        
-        
         if (i == 0) {
             // console.log(degstart)
             
@@ -78,16 +68,9 @@ function circkle() {
         }
     }
     count = count + 0.01
-    // console.log(count)
-
-    
     ctx.save()
-    
 }
 
-
-
-console.log("hej")
 let colors = []
 let players= document.location["href"].split("=")[1]
 
@@ -97,6 +80,4 @@ for (let i = 0; i < players; i++) {
 }
 // console.log(colors)
 let count = 0.01
-
-setInterval(circkle, 10);
 // player(200,20)

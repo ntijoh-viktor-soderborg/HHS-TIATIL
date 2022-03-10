@@ -1,3 +1,49 @@
+@-webkit-keyframes testritet {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  25% {
+    left: 90vw;
+    top: 0;
+  }
+  50% {
+    left: 90vw;
+    top: 90vh;
+  }
+  75% {
+    left: 0;
+    top: 90vh;
+  }
+  90% {
+    right: 0;
+    top: 0;
+  }
+}
+
+@keyframes testritet {
+  0% {
+    left: 0;
+    top: 0;
+  }
+  25% {
+    left: 90vw;
+    top: 0;
+  }
+  50% {
+    left: 90vw;
+    top: 90vh;
+  }
+  75% {
+    left: 0;
+    top: 90vh;
+  }
+  90% {
+    right: 0;
+    top: 0;
+  }
+}
+
 *, html {
   margin: 0;
   padding: 0;
@@ -5,23 +51,81 @@
           box-sizing: border-box;
 }
 
-main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 h2 {
   margin-top: 2rem;
   font-size: 2rem;
 }
 
-.pressed {
-  background-color: lightgreen;
+body {
+  font-family: monospace;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f3ea;
+  place-content: center;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.player {
+  border-radius: 50%;
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-color: #51df93;
+  -webkit-animation-name: testritet;
+          animation-name: testritet;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  display: inline-block;
+}
+
+.loping {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+h1 {
+  text-align: center;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+form {
+  margin-top: 2rem;
+}
+
+input {
+  border: 3px solid black;
+  background-color: #f5f3ea;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  font-family: monospace;
+}
+
+input[type=submit] {
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

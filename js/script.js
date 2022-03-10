@@ -8,19 +8,23 @@ let player3 = 'n';
 
 let songs = ['TheFatRat - Fly Away feat. Anjulie.mp3', 'TheFatRat - Monody (feat. Laura Brehm).mp3','TheFatRat - Unity.mp3', 'TheFatRat & RIELL - Hiding In The Blue [Chapter 1].mp3']
 let delays = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
-let stopTime = Math.floor(Math.random() * delays.length + 1) * 1000;
 
 let audio = document.querySelector('audio');
 
 document.body.addEventListener('keydown', (e) => {
-    order.push(e.key);
-    updateUI(order);
+    // order.push(e.key);
+    // updateUI(order);
     if (e.key === 'p') {
+        let uwu = setInterval(circkle, 10);
+        let stopTime = Math.floor(Math.random() * delays.length + 1) * 2000;
         let songIndex = Math.floor(Math.random() * songs.length);
         let randomSong = new Audio(`./assets/${songs[songIndex]}`);
+        document.querySelector('h1').innerText = `Currently playing: ${songs[songIndex].slice(0,-4)}`
         playSong(randomSong);
-        console.log(stopTime)
+        console.log(`Song stop time = ${stopTime}`)
         setTimeout(() => {
+            players--
+            clearInterval(uwu)
             stopSong(randomSong);
         }, stopTime)
     }
@@ -28,16 +32,7 @@ document.body.addEventListener('keydown', (e) => {
 
 function updateUI(list) {
     for (let i = 0; i < list.length; i++) {
-        if (list[i] === player1) {
-            test1.innertext = 'Player 1';
-            test1.classList.add('pressed');
-        } else if (list[i] === player2) {
-            test2.innertext = 'Player 2';
-            test2.classList.add('pressed');
-        } else if (list[i] === player3) {
-            test3.innertext = 'Player 3';
-            test3.classList.add('pressed');
-        }
+        console.log(list[i])
     }
 }
 
@@ -48,4 +43,5 @@ function playSong(song) {
 function stopSong(song) {
     song.pause();
     song.currentTime = 0;
+    document.querySelector('h1').innerText = 'Currently playing:'
 }
