@@ -24,14 +24,10 @@ function getRndColor() {
     return 'rgb(' + r + ',' + g + ',' + b + ')';
 }
 
-let colors = []
 
-for (let i = 0; i < 180; i++) {
-    colors << getRndColor()
-    console.log(colors)
-}
 
-function circkle(players=8) {
+
+function circkle() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, 400, 400); // clear canvas
@@ -49,8 +45,8 @@ function circkle(players=8) {
         if (i == 0) {
             // console.log(degstart)
             
-            a=200+100*Math.sin(degstart)
-            b=200+100*Math.cos(degstart)  
+            a=200+150*Math.sin(degstart)
+            b=200+150*Math.cos(degstart)  
             // console.log(a,b)
             ctx.beginPath();
             ctx.arc(a, b, 15, 0, 2 * Math.PI);
@@ -59,8 +55,8 @@ function circkle(players=8) {
             ctx.fill();
         } else {
             // console.log(degstart+1)
-            x=200+100*Math.sin(degstart+degbetwen*(i))
-            y=200+100*Math.cos(degstart+degbetwen*(i)) 
+            x=200+150*Math.sin(degstart+degbetwen*(i))
+            y=200+150*Math.cos(degstart+degbetwen*(i)) 
             // console.log(x,y)
             ctx.beginPath();
             ctx.arc(x, y, 15, 0, 2 * Math.PI);
@@ -69,6 +65,9 @@ function circkle(players=8) {
         }
     }
     count = count + 0.01
+    console.log(count)
+
+    
     ctx.save()
     
 }
@@ -76,11 +75,13 @@ function circkle(players=8) {
 
 
 console.log("hej")
+let colors = []
+let players = 8
 for (let i = 0; i < 180; i++) {
     colors.push(getRndColor())
 }
 // console.log(colors)
 let count = 0.01
-setInterval(circkle, 10);
 
+setInterval(circkle, 10);
 // player(200,20)
