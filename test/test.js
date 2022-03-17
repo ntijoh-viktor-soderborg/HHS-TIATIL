@@ -31,6 +31,8 @@ function getRndColor() {
     return 'rgb(' + r + ',' + g + ',' + b + ')';
 }
 
+
+
 function circkle() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
@@ -39,33 +41,51 @@ function circkle() {
     var now = new Date();
     var milisecond = now.getMilliseconds();
     // console.log(milisecond)
-    // console.log(colors)
+    // console.log(colors)oki
 
     degbetwen = (2*Math.PI/players)
     degstart = (2*Math.PI/players)+count
     // console.log(count)
+
+
+
+
+
+     
     for (let i = 0; i < players; i++) {
+         
+      
         if (i == 0) {
             // console.log(degstart)
-            
+
             a=200+150*Math.sin(degstart)
             b=200+150*Math.cos(degstart)  
             // console.log(a,b)
             ctx.beginPath();
+    
             ctx.arc(a, b, 15, 0, 2 * Math.PI);
             // console.log(colors[i])
             ctx.fillStyle = colors[i];
             ctx.fill();
+
         } else {
             // console.log(degstart+1)
             x=200+150*Math.sin(degstart+degbetwen*(i))
             y=200+150*Math.cos(degstart+degbetwen*(i)) 
             // console.log(x,y)
             ctx.beginPath();
+
             ctx.arc(x, y, 15, 0, 2 * Math.PI);
+ 
             ctx.fillStyle = colors[i];
             ctx.fill();  
         }
+
+        ctx.moveTo(200+30*Math.cos(i*degbetwen), 200+30*Math.sin(i*degbetwen));
+        ctx.lineTo(200+60*Math.cos(i*degbetwen), 200+60*Math.sin(i*degbetwen));
+        ctx.lineWidth = 35;
+        ctx.stroke();
+        
     }
     count = count + 0.01
     ctx.save()
@@ -74,10 +94,12 @@ function circkle() {
 let colors = []
 let players= document.location["href"].split("=")[1]
 
-// console.log(formData)
+console.log(players)
 for (let i = 0; i < players; i++) {
     colors.push(getRndColor())
 }
+
 // console.log(colors)
 let count = 0.01
+// setInterval(circkle, 10);
 // player(200,20)
