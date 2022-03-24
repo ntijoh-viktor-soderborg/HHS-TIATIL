@@ -40,6 +40,60 @@ function getRndColor() {
 
 
 
+
+
+
+function chair(players) {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    chairs = players - 1
+    degbetwen = (2*Math.PI/chairs)
+    // degstart = (2*Math.PI/chairs)+count
+    // console.log(count)
+
+    for (let i = 0; i < players; i++) {
+            
+        
+        if (i == 0) {
+            // console.log(degstart)
+
+            // a=200+50*Math.sin(degstart)
+            // b=200+50*Math.cos(degstart)  
+            // // console.log(a,b)
+            // ctx.beginPath();
+
+            // ctx.arc(a, b, 15, 0, 2 * Math.PI);
+
+            // ctx.fillStyle = black;
+            // ctx.fill();
+
+        } else {
+            // console.log(degstart+1)
+            x=200+50*Math.sin(degbetwen*(i))
+            y=200+50*Math.cos(degbetwen*(i)) 
+            console.log(x,y)
+            ctx.beginPath();
+            
+            ctx.arc(x, y, 15, 0, 2 * Math.PI);
+
+            ctx.fillStyle = "brown";
+            ctx.fill();
+
+        }
+
+        
+    }
+    count = count + 0.01
+    ctx.save()
+}
+
+
+
+
+
+
+
 function circkle() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
@@ -91,14 +145,12 @@ function circkle() {
             ctx.fill();
         }
 
-        ctx.moveTo(200+30*Math.cos(i*degbetwen), 200+30*Math.sin(i*degbetwen));
-        ctx.lineTo(200+60*Math.cos(i*degbetwen), 200+60*Math.sin(i*degbetwen));
-        ctx.lineWidth = 35;
-        ctx.stroke();
-        
     }
     count = count + 0.01
     ctx.save()
+
+    chair(players)
+
 }
 
 let colors = [];
