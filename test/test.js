@@ -74,6 +74,9 @@ function circkle() {
     }
     count = count + 0.01
     ctx.save()
+
+    chair(players)
+
 }
 
 let colors = [];
