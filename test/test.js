@@ -3,32 +3,6 @@ let keys = ['a', 's', 'd', 'f'];
 // ^ Vilka knappar som en spelare har tillgång till
 let keyNumb = -1;
 
-// function player(x,y) {
-//     ctx.beginPath();
-//     ctx.arc(x, y, 15, 0, 2 * Math.PI);
-//     ctx.fillStyle = getRndColor();
-//     ctx.fill();
-// }
-
-// function Drawcirckle() {
-//     var c = document.getElementById("myCanvas");
-//     var ctx = c.getContext("2d");
-//     ctx.beginPath();
-//     ctx.arc(200, 200, 180, 0, 2 * Math.PI);
-//     ctx.stroke();
-// }
-
-// function drawHand(ctx, pos, length, width) {
-//     ctx.beginPath();
-//     ctx.lineWidth = width;
-//     ctx.lineCap = "round";
-//     ctx.moveTo(0,0);
-//     ctx.rotate(pos);
-//     ctx.lineTo(0, -length);
-//     ctx.stroke();
-//     ctx.rotate(-pos);
-//   }
-
 function getRndColor() {
     playerNumb++
     keyNumb++
@@ -37,8 +11,6 @@ function getRndColor() {
         b = 255*Math.random()|0;
     return {name: `Player ${playerNumb}`, color:'rgb(' + r + ',' + g + ',' + b + ')', key:keys[keyNumb]};
 }
-
-
 
 function circkle() {
     var c = document.getElementById("myCanvas");
@@ -60,13 +32,13 @@ function circkle() {
 
      
     for (let i = 0; i < players; i++) {
-         
+        
       
         if (i == 0) {
             // console.log(degstart)
 
-            a=200+150*Math.sin(degstart)
-            b=200+150*Math.cos(degstart)  
+            a=250+180*Math.sin(degstart)
+            b=250+180*Math.cos(degstart)  
             // console.log(a,b)
             ctx.beginPath();
     
@@ -79,26 +51,32 @@ function circkle() {
 
         } else {
             // console.log(degstart+1)
-            x=200+150*Math.sin(degstart+degbetwen*(i))
-            y=200+150*Math.cos(degstart+degbetwen*(i)) 
+            x=250+180*Math.sin(degstart+degbetwen*(i))
+            y=250+180*Math.cos(degstart+degbetwen*(i)) 
             // console.log(x,y)
             ctx.beginPath();
 
             ctx.arc(x, y, 15, 0, 2 * Math.PI);
+            // ctx.arc(250+50*Math.sin(degbetwen*(i)),250+50*Math.cos(degbetwen*(i)) , 15, 0, 2 * Math.PI);
             ctx.fillStyle = colors[i]["color"];
             ctx.font = '20px Arial';
             ctx.fillText(`${colors[i]["name"]}`, x-35, y-20);
             ctx.fill();
         }
 
-        ctx.moveTo(200+30*Math.cos(i*degbetwen), 200+30*Math.sin(i*degbetwen));
-        ctx.lineTo(200+60*Math.cos(i*degbetwen), 200+60*Math.sin(i*degbetwen));
-        ctx.lineWidth = 35;
-        ctx.stroke();
+        
+        
+        // ctx.moveTo(200+30*Math.cos(i*degbetwen), 200+30*Math.sin(i*degbetwen));
+        // ctx.lineTo(200+60*Math.cos(i*degbetwen), 200+60*Math.sin(i*degbetwen));
+        // ctx.lineWidth = 35;
+        // ctx.stroke();
         
     }
     count = count + 0.01
     ctx.save()
+
+    chair(players)
+
 }
 
 let colors = [];
