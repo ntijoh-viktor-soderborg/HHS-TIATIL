@@ -25,22 +25,11 @@ function chair(players) {
 
 
         if (i == 0) {
-            // console.log(degstart)
-
-            // a=200+50*Math.sin(degstart)
-            // b=200+50*Math.cos(degstart)  
-            // // console.log(a,b)
-            // ctx.beginPath();
-
-            // ctx.arc(a, b, 15, 0, 2 * Math.PI);
-
-            // ctx.fillStyle = black;
-            // ctx.fill();
 
         } else {
             // console.log(degstart+1)
-            x=200+50*Math.sin(degbetwen*(i))
-            y=200+50*Math.cos(degbetwen*(i)) 
+            x=250+50*Math.sin(degbetwen*(i))
+            y=250+50*Math.cos(degbetwen*(i)) 
             console.log(x,y)
             ctx.beginPath();
 
