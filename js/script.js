@@ -33,7 +33,7 @@ function game() {
         var ctx = c.getContext("2d");
         ctx.clearRect(0, 0, 500, 500); // clear canvas
         let component = `<h1>${players[0]["name"]} vann!</h1>
-        <a href="http://192.168.193.32:5500/index.html">Go back`;
+        <a href="/index.html">Go back`;
         document.querySelector('main').innerHTML = component;
     }
 }
