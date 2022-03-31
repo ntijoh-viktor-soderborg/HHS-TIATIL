@@ -9,7 +9,7 @@ window.onload = (event) => {
 }
 
 function game() {
-    if (players > 1) {
+    if (amount > 1) {
         order = [];
         let playTime = setInterval(circkle, 10);
         let stopTime = Math.floor(Math.random() * delays.length + 1) * 2000;
@@ -17,37 +17,38 @@ function game() {
         let randomSong = new Audio(`./assets/${songs[songIndex]}`);
         document.querySelector('h1').innerText = `Currently playing: ${songs[songIndex].slice(0,-4)}`
         playSong(randomSong);
-        console.log(`Song stop time = ${stopTime}`)
+        console.log(`Song stop time = ${stopTime}`) //Ta bort när projektet är klart
         setTimeout(() => {
             clearInterval(playTime)
             stopSong(randomSong);
             document.body.addEventListener('keydown', (e) => {
-                if (keys.includes(e.key) && !order.includes(e.key)) {
+                if (players.slice(0,amount+1).filter(el => el.key === `${e.key}`).length > 0 && !order.includes(e.key)) {
                     order.push(e.key);
                     updateUI(order);
                 }
             })
         }, stopTime)
-    } else if (players === 1) {
+    } else if (amount === 1) {
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
         ctx.clearRect(0, 0, 500, 500); // clear canvas
-        let component = `<h1>Player ${players} vann!</h1>`;
+        let component = `<h1>${players[0]["name"]} vann!</h1>
+        <a href="http://192.168.193.32:5500/index.html">Go back`;
         document.querySelector('main').innerHTML = component;
     }
 }
 
-
 function updateUI(list) {
-    if (list.length === players) {
-        let listDup = [...list]
-        let lastPlayer = listDup.pop()
-        //Remove lastPlayer by their key which is recived by function above
-        players--
+    if (list.length === amount) {
+        let lastPlayer = list.pop()
+        players = players.slice(0,amount+1).filter(el => {
+            return el.key !== `${lastPlayer}`
+        })
+        amount--
         game();
     }
 }
-
+ 
 function playSong(song) {
     song.play();
 }

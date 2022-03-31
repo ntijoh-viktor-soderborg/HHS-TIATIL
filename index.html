@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="stylesheet" href="scss/style.css">
     <title>Start</title>
 </head>
@@ -12,10 +11,13 @@
     <main>
         <h1 class="h1">Hela havet stormar!</h1>
         <form action="/game.html">
-            <input type="number" name="player" id="player" placeholder="Amount of players">
+            <input type="number" name="player" id="player" placeholder="Amount" min="2" max="8">
             <br>
             <input type="submit" value="Play!">
         </form>
+
+        <h2 class="controls"></h2>
     </main>
+    <script src="js/animation.js"></script>
 </body>
 </html>
